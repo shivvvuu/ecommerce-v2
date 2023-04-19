@@ -1,0 +1,24 @@
+[tool.poetry]
+name = "ecommerce-v2"
+version = "0.1.0"
+description = ""
+authors = ["shivam <jhodshivam5122@gmail.com>"]
+license = "MIT"
+readme = "README.md"
+packages = [{include = "ecommerce_v2"}]
+
+[tool.poetry.dependencies]
+django = "^4.2"
+django-mptt = "^0.14.0"
+pillow = "^9.5.0"
+
+
+[tool.poetry.group.dev.dependencies]
+pytest-factoryboy = "^2.5.1"
+pytest-django = "^4.5.2"
+pytest-selenium = "^4.0.0"
+black = "^23.3.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
