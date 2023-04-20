@@ -219,12 +219,8 @@ class ProductInventory(models.Model):
         verbose_name=_("universal product code"),
         help_text=_("format: required, unique, max-12"),
     )
-    product_type = models.ForeignKey(
-        ProductType, related_name="product_type", on_delete=models.PROTECT
-    )
-    product = models.ForeignKey(
-        Product, related_name="product", on_delete=models.PROTECT
-    )
+    product_type = models.ForeignKey(ProductType, related_name="product_type", on_delete=models.PROTECT)
+    product = models.ForeignKey(Product, related_name="product", on_delete=models.PROTECT)
     brand = models.ForeignKey(Brand, related_name="brand", on_delete=models.PROTECT)
     attribute_values = models.ManyToManyField(
         ProductAttributeValue,
@@ -315,7 +311,7 @@ class Media(models.Model):
         on_delete=models.PROTECT,
         related_name="media_product_inventory",
     )
-    image = models.ImageField(
+    img_url = models.ImageField(
         unique=False,
         null=False,
         blank=False,
@@ -413,9 +409,7 @@ class ProductTypeAttribute(models.Model):
         ProductAttribute, related_name="productattribute", on_delete=models.PROTECT
     )
 
-    product_type = models.ForeignKey(
-        ProductType, related_name="producttype", on_delete=models.PROTECT
-    )
+    product_type = models.ForeignKey(ProductType, related_name="producttype", on_delete=models.PROTECT)
 
     class Meta:
         unique_together = ("product_attribute", "product_type")
